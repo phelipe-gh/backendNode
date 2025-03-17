@@ -45,6 +45,20 @@ paths:
               schema:
                 type: number
 
+  /calcular-soma:
+    get:
+      tags:
+        - Calculos
+      summary: Return code 200
+      description: Endpoint para somar dois valores
+      operationId: getcalculos
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: number
 components:
   securitySchemes:
     bearerAuth:
