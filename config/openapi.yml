@@ -46,6 +46,7 @@ paths:
                 type: number
 
   /calcular-soma:
+    
     get:
       tags:
         - Calculos
@@ -59,6 +60,33 @@ paths:
             application/json:
               schema:
                 type: number
+
+  /movies:
+   get:
+    tags:
+      - lista de filmes
+    summary: Return code 200
+    description: Endpoint para listar filmes
+    operationId: getMovies
+    responses:
+      200:
+        description: Success
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  year:
+                    type: integer
+                  genre:
+                    type: string
+                
 components:
   securitySchemes:
     bearerAuth:
