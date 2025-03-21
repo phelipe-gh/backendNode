@@ -8,28 +8,80 @@ servers:
  
 paths:
   
-  /mercado-livre:
+  /tools:
     post:
       tags:
-        - Mercado Livre
+        - Ferramentas
       summary: Return code 200
       description: Endpoint pra integração da aplicação casa mineira com mercado livre
-      operationId: sendLeadFromMercadoLivre
+      operationId: saveFerramenta
       requestBody:
         required: true
         description: Lead enviado pela origem
         content:
           application/json:
             schema:
-              type: object
+              type: number
       responses:
         200:
           description: Success
           content:
             application/json:
               schema:
-                type: number
+                type: object
 
+  /list-tools:
+    get:
+      tags:
+        - Ferramentas
+      summary: Retorna uma lista de ferramentas
+      description: Endpoint para integração da aplicação Casa Mineira com Mercado Livre, retornando uma lista de ferramentas cadastradas.
+      operationId: listFerramenta
+      responses:
+        200:
+          description: Lista de ferramentas retornada com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: "Furadeira Elétrica"
+                    description:
+                      type: string
+                      example: "Furadeira de impacto 500W"
+                    purchase_date:
+                      type: string
+                      format: date
+                      example: "2023-10-01"
+                    invoice_number:
+                      type: string
+                      example: "12345"
+                    supplier:
+                      type: string
+                      example: "Fornecedor XYZ"
+                    power:
+                      type: string
+                      example: "500W"
+                    seal:
+                      type: string
+                      example: "Selado"
+                    pricing:
+                      type: object
+                      properties:
+                        daily:
+                          type: number
+                          example: 15.0
+                        biweekly:
+                          type: number
+                          example: 28.0
+                        monthly:
+                          type: number
+                          example: 50.0
+  
   /info:
     get:
       tags:
