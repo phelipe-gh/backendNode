@@ -97,6 +97,120 @@ paths:
               schema:
                 type: number
 
+  /calcular-soma:
+    
+    get:
+      tags:
+        - Calculos
+      summary: Return code 200
+      description: Endpoint para somar dois valores
+      operationId: getcalculos
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: number
+
+  /movies:
+   get:
+    tags:
+      - lista de filmes
+    summary: Return code 200
+    description: Endpoint para listar filmes
+    operationId: getMovies
+    responses:
+      200:
+        description: Success
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  year:
+                    type: integer
+                  genre:
+                    type: string
+
+  /clima:
+   get:
+    tags:
+      - clima da cidade
+    summary: Return code 200
+    description: Endpoint ver o clima de uma cidade
+    operationId: getClima
+    responses:
+      200:
+        description: Success
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  city:
+                    type: string
+                  temperature:
+                    type: integer
+                  description:
+                    type: string
+                  humidity:
+                    type: integer   
+
+  /users:
+    post:
+      tags:
+        - Users
+      summary: Create a new user
+      description: Endpoint para criar um novo usuário na aplicação.
+      operationId: addUser
+      requestBody:
+        required: true
+        description: Dados do usuário a ser criado
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Nome do usuário
+                email:
+                  type: string
+                  description: E-mail do usuário
+                password:
+                  type: string
+                  description: Senha do usuário
+                age:
+                  type: number
+                  description: idade do usuario
+              required:
+                - name
+                - email
+                - password
+                - age
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+        500:
+          description: Error
+          content:
+            application/json:
+              schema:
+                type: object
+
 components:
   securitySchemes:
     bearerAuth:
