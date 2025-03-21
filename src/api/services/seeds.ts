@@ -1,4 +1,3 @@
-import chalk from "chalk";
 import { Ferramenta } from "../entity/Ferramenta";
 import { FerramentaRepository } from "../repositorys/ferramenta.repository";
 import sqlite3 from 'sqlite3';
@@ -390,8 +389,8 @@ export default class Seeds {
           const tableExists = await this.checkIfTableExists();
           
           if (!tableExists) {
-            console.log(chalk.hex('#0000FF')("Banco limpo!"));
-            console.log(chalk.hex('#FFA500')("------- Criando a tabela e iniciando SEEDS -------"));
+            console.log("Banco limpo!");
+            console.log("------- Criando a tabela e iniciando SEEDS -------");
             
             // Cria a tabela caso não exista
             await this.createTable();
@@ -401,7 +400,7 @@ export default class Seeds {
           const ferramentasDBSize: number = await (await FerramentaRepository.list()).length;
       
           if (ferramentasDBSize === 0) {
-            console.log(chalk.hex('#FFA500')("------- Iniciando SEEDS no banco -------"));
+            console.log("------- Iniciando SEEDS no banco -------");
             
             for (const element of data) {
               const toolsRepository = new Ferramenta(
@@ -419,9 +418,9 @@ export default class Seeds {
               await FerramentaRepository.save(toolsRepository);
             }
       
-            console.log(chalk.green("Banco populado com sucesso!"));
+            console.log("Banco populado com sucesso!");
           } else {
-            console.log(chalk.yellow("O banco já contém dados. Não foi necessário popular."));
+            console.log("O banco já contém dados. Não foi necessário popular.");
           }
         } catch (err) {
           console.error("Erro ao popular o banco:", err);

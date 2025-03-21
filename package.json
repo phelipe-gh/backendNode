@@ -22,7 +22,6 @@
 		"@types/validator": "^13.7.3",
 		"@types/yamljs": "^0.2.31",
 		"axios": "^1.8.4",
-		"chalk": "^5.4.1",
 		"connect": "^3.7.0",
 		"dotenv-extended": "^2.9.0",
 		"dotenv-parse-variables": "^2.0.0",
