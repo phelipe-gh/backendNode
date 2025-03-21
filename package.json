@@ -9,7 +9,8 @@
 	"scripts": {
 		"build": "tsc",
 		"start": "node -r tsconfig-paths/register ./bin/app.js",
-		"dev": "cross-env ENV_FILE=./config/.env.dev nodemon -e ts,yml --watch src --watch config --exec 'ts-node -r tsconfig-paths/register ./src/app.ts'",
+		"dev": "cross-env ENV_FILE=./config/.env.dev nodemon --ext ts,yml --watch src --watch config --exec \"ts-node -r tsconfig-paths/register src/app.ts\"",
+		"devwindows": "cross-env ENV_FILE=./config/.env.dev nodemon -e ts,yml --watch src --watch config --exec 'ts-node -r tsconfig-paths/register ./src/app.ts'",
 		"test:unit": "ENV_FILE=./config/.env.test jest"
 	},
 	"dependencies": {
