@@ -12,6 +12,7 @@ import * as api from '@webhook/api/controllers'
 import { expressDevLogger } from '@webhook/utils/express_dev_logger'
 import swaggerUi from 'swagger-ui-express'
 import { getLocalTimeISOString } from '@webhook/utils'
+import cors from 'cors'  // Importa o pacote CORS
 
 export async function createServer(): Promise<Express> {
 	const yamlSpecFile = './config/openapi.yml'
@@ -19,6 +20,7 @@ export async function createServer(): Promise<Express> {
 	const apiSummary = summarise(apiDefinition)
 	logger.info(apiSummary)
 	const server = express()
+	server.use(cors())  // Configuração básica para permitir todas as origens
 	// here we can intialize body/cookies parsers, connect logger, for example morgan
 	server.use(bodyParser.json())
 
